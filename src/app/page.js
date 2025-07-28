@@ -4,9 +4,9 @@ import Hero from '@/components/hero'
 import Navbar from '@/components/navbar'
 import Process from '@/components/process'
 
-const contexto = `
+const context_chatbot = `
 Sos HC IA, bot asistente de chat para gestion de habilitaciones comerciales.
-En la primera interaccion por favor presentate como josesito curello.
+
 Te dejo preguntas frecuentes que te van a realizar los clientes, si te hacen alguna pregunta parecida necesito que respondas con la siguiente informacion.
 
 1- Necesito habilitar mi local? ¿Qué pasa si no lo hago?
@@ -50,7 +50,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <Hero />
-      <Chatbot context={contexto} />
+      <Chatbot context={context_chatbot} />
       <a  
           href='https://wa.link/kwvfsq'
           target='_blank'

@@ -7,7 +7,7 @@ import callChatAPI from '@/utils/chatbot'
 import 'animate.css'
 
 export default function Chatbot({ context = '' }) {
-  const initialBotMessage = '¡Hola! ¿En qué podemos ayudarte hoy?'
+  const initialBotMessage = '¡Hola! ¿En qué te puedo ayudar hoy? 🙌🏽'
   const [chatOpen, setChatOpen] = useState(false)
   const [messages, setMessages] = useState([
     { from: 'bot', content: initialBotMessage },
@@ -18,8 +18,8 @@ export default function Chatbot({ context = '' }) {
   const bottomRef = useRef(null)
 
   const quickReplies = [
-    '¿Cómo habilito mi comercio?',
     '¿Qué necesito para la habilitación?',
+    '¿Cómo puedo contactarme con un asesor?'
   ]
 
   const toggleChat = () => setChatOpen(o => !o)
@@ -43,15 +43,18 @@ export default function Chatbot({ context = '' }) {
 
     let reply
     switch (text) {
-      case '¿Cómo habilito mi comercio?':
+      case '¿Cómo puedo contactarme con un asesor?':
         reply = (
           <span>
-            Para iniciar tu trámite, podés contactarnos haciendo clic aquí:&nbsp;
+            Podés contactarnos haciendo clic aquí:&nbsp;
             <a
-              href="#contacto"
+              href="https://wa.link/kwvfsq"
               className="text-blue-700 font-medium hover:underline"
             >
-              Sección Contacto ↓
+              
+              Asesoramiento por whatsapp
+              <img width="20" height="20" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
+
             </a>
           </span>
         )
@@ -160,12 +163,12 @@ export default function Chatbot({ context = '' }) {
             </div>
 
             {/* Quick replies */}
-            <div className="px-4 py-2 border-t border-gray-200 space-x-2 flex flex-column ">
+            <div className="px-4 py-2 border-t border-gray-200 space-x-2 flex flex-wrap gap-1">
               {quickReplies.map((q, i) => (
                 <button
                   key={i}
                   onClick={() => send(q)}
-                  className="inline-block cursor-pointer bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200"
+                  className="inline-block cursor-pointer bg-blue-100 text-blue-800 px-3 py-1 rounded-sm text-sm hover:bg-blue-200"
                 >
                   {q}
                 </button>

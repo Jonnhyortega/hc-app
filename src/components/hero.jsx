@@ -10,7 +10,7 @@ export default function Hero() {
           src={herobck}
           fill
           alt="Avenida 9 de Julio, Buenos Aires"
-          className="object-cover"
+          className="object-cover bg-fixed"
           priority
         />
         {/* Overlay gradient */}
