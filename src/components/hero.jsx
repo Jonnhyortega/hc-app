@@ -19,17 +19,17 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+        <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight drop-shadow-[5px_5px_5px_black]">
           HABILITACIONES<br /> MUNICIPALES
         </h1>
-        <p className="mt-4 max-w-xl text-lg md:text-xl text-white/90 filter drop-shadow-zinc-900">
+        <p className="mt-4 max-w-xl text-lg md:text-xl font-bold text-white/90 drop-shadow-[5px_5px_5px_black]">
           Asesoramos a comercios e industrias en la Ciudad de Buenos Aires para que inicien sus actividades con total legalidad y eficiencia.
         </p>
         <a
-          href="#contacto"
+          href="https://wa.link/kwvfsq"
           className="mt-8 inline-block rounded-md bg-blue-500 px-8 py-3 text-lg font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
-          Contáctanos
+          Contactanos
         </a>
       </div>
 

@@ -96,16 +96,17 @@ export default function Chatbot({ context = '' }) {
       {!chatOpen && (
         <button
           onClick={toggleChat}
-          className="fixed bottom-6 right-6 z-50 flex items-center space-x-2 cursor-pointer bg-blue-800 p-5 rounded-full text-white shadow-lg hover:bg-blue-900 focus:outline-none"
+          className="fixed bottom-6 right-6 z-50 flex items-center space-x-2 cursor-pointer bg-blue-900/70 p-5 rounded-full text-white shadow-lg hover:bg-blue-900 focus:outline-none"
           aria-label="Abrir chat"
         >
           <img 
-          width="40" 
-          height="40" 
+          width="25" 
+          height="25" 
           src="https://img.icons8.com/ios-filled/50/chatgpt.png" 
           alt="chatgpt"
           />
-          <span className="hidden md:inline">Consultar</span>
+          
+          {/* <span className="hidden md:inline">Consultar</span> */}
         </button>
       )}
 
@@ -159,12 +160,12 @@ export default function Chatbot({ context = '' }) {
             </div>
 
             {/* Quick replies */}
-            <div className="px-4 py-2 border-t border-gray-200 space-x-2">
+            <div className="px-4 py-2 border-t border-gray-200 space-x-2 flex flex-column ">
               {quickReplies.map((q, i) => (
                 <button
                   key={i}
                   onClick={() => send(q)}
-                  className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200"
+                  className="inline-block cursor-pointer bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200"
                 >
                   {q}
                 </button>

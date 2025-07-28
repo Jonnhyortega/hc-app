@@ -1,6 +1,7 @@
 import Chatbot from '@/components/chatbot'
 import Faq from '@/components/faq'
 import Hero from '@/components/hero'
+import Navbar from '@/components/navbar'
 import Process from '@/components/process'
 
 const contexto = `
@@ -47,8 +48,17 @@ Arquitectos, gestores o consultoras especializadas en habilitaciones.
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <Navbar />
       <Hero />
       <Chatbot context={contexto} />
+      <a  
+          href='https://wa.link/kwvfsq'
+          target='_blank'
+          className="fixed bottom-24 right-6 z-39 flex items-center space-x-2 cursor-pointer bg-blue-900/70 p-5 rounded-full text-white shadow-lg hover:bg-blue-900 focus:outline-none"
+          aria-label="Abrir chat"
+        >
+          <img width="25" height="25" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
+        </a>
 
       <main className="w-full flex flex-col">
         <Process />
