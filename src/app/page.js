@@ -3,6 +3,7 @@ import Faq from '@/components/faq'
 import Hero from '@/components/hero'
 import Navbar from '@/components/navbar'
 import Process from '@/components/process'
+import Services from '@/components/services'
 
 const context_chatbot = `
 Sos HC IA, bot asistente de chat para gestion de habilitaciones comerciales.
@@ -63,6 +64,7 @@ export default function Home() {
       <main className="w-full flex flex-col">
         <Process />
         <Faq />
+        <Services />
         {/* Otras secciones aquí, todas full-width, con sus propios <div className="container mx-auto"> */}
       </main>
 
