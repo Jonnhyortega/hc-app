@@ -19,7 +19,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight drop-shadow-[5px_5px_5px_black]">
+        <h1 className="text-3xl md:text-6xl font-bold text-white leading-tight drop-shadow-[5px_5px_5px_black]">
           HABILITACIONES<br /> MUNICIPALES
         </h1>
         <p className="mt-4 max-w-xl text-lg md:text-xl font-bold text-white/90 drop-shadow-[5px_5px_5px_black]">
