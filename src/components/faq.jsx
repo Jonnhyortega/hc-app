@@ -31,7 +31,7 @@ export default function Faq() {
   }
 
   return (
-    <section className="bg-white py-16">
+    <div className="bg-white py-16">
       <div className="container mx-auto px-4 sm:px-20">
         <h2 className="text-3xl font-semibold text-gray-800 mb-8">
           Preguntas frecuentes
@@ -67,6 +67,6 @@ export default function Faq() {
           })}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

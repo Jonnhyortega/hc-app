@@ -35,7 +35,7 @@ import {
     ]
   
     return (
-      <section className="relative bg-white pt-16 pb-20 overflow-hidden">
+      <div className="relative bg-white pt-16 pb-20 overflow-hidden">
         {/* Contenido centrado */}
         <div className="container mx-auto px-4 sm:px-20">
           <h2 className="text-3xl font-semibold text-center text-gray-800 mb-12">
@@ -80,7 +80,7 @@ import {
             />
           </svg>
         </div>
-      </section>
+      </div>
     )
   }
   

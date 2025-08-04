@@ -11,7 +11,7 @@ const habilitaciones = [
 
 export default function Services() {
   return (
-    <section className="text-center py-12">
+    <div className="text-center py-12">
       <h2 className="text-3xl font-bold text-blue-800">Habilitaciones Comerciales</h2>
       <div className="h-1 w-24 bg-green-600 mx-auto my-4"></div>
 
@@ -26,6 +26,6 @@ export default function Services() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

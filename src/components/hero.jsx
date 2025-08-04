@@ -1,18 +1,9 @@
-import Image from 'next/image';
-import herobck from '@/img/hero-background.webp';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-scren">
+    <div className="relative h-screen w-scren bg-fixed bg-center bg-cover " style={{ backgroundImage: "url('/hero-background.webp')" }}>
       {/* Background image */}
       <div className="absolute inset-0">
-        <Image
-          src={herobck}
-          fill
-          alt="Avenida 9 de Julio, Buenos Aires"
-          className="object-cover bg-fixed"
-          priority
-        />
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-transparent" />
       </div>
@@ -60,6 +51,6 @@ export default function Hero() {
           />
         </svg>
       </div>
-    </section>
+    </div>
   );
 }
