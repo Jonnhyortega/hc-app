@@ -39,7 +39,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="fixed top-[20px] left-4 right-4 h-[90vh] z-51 bg-blue-900/70 backdrop-blur-md rounded-2xl shadow-lg p-4 flex flex-col items-center justify-center gap-4 md:hidden">
+        <div className="fixed top-[20px] left-4 right-4 h-[80vh] z-51 bg-blue-900/70 backdrop-blur-md rounded-2xl shadow-lg p-4 flex flex-col items-center justify-center gap-4 md:hidden">
           <Image src={logo} alt="Gestion comercial" width={70} height={70} className='absolute top-[20px] '/>
           <span onClick={()=>{setOpen(!open)}} className='fixed top-[5px] right-[15px] text-white'>x</span>
           <a href="#hero" onClick={() => setOpen(false)} className="text-lg font-medium text-white hover:text-blue-300 transition">Inicio</a>

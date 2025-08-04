@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter, IBM_Plex_Sans } from 'next/font/google'
+import Head from 'next/head'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -42,6 +43,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S1RVV2XKX" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0S1RVV2XKX');
+            `
+          }}
+        />
+      </Head>
+
+
       <body
         className={`${inter.variable} ${ibm.variable} antialiased`}
       >

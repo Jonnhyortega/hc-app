@@ -190,7 +190,7 @@ export default function Chatbot() {
               <div ref={bottomRef} />
             </div>
 
-            <div className="px-4 py-2 border-t border-gray-200 space-x-2 flex flex-wrap gap-1">
+            <div className="px-4 py-2 border-gray-200 space-x-2 flex flex-wrap gap-1">
               {quickReplies.map((q, i) => (
                 <button
                   key={i}
