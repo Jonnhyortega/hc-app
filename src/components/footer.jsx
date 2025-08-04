@@ -16,7 +16,6 @@ export default function Footer() {
 
         {/* Columna 2: Enlaces */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Navegación</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="#about" className="hover:text-blue-400 transition">Nosotros</a></li>
             <li><a href="#services" className="hover:text-blue-400 transition">Servicios</a></li>
@@ -67,6 +66,12 @@ export default function Footer() {
       {/* Footer inferior */}
       <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-gray-500">
         &copy; {new Date().getFullYear()} HC Gestión Comercial. Todos los derechos reservados.
+      </div>
+
+      <div className='flex items-center justify-center decoration-1'>
+        <a className='text-white underline mt-2 text-center text-xs w-[100%]' href="https://www.jonnhyortegadev.com" target='_blank'>
+            Content creator
+        </a>
       </div>
     </footer>
   )

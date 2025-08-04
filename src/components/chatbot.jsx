@@ -115,6 +115,7 @@ export default function Chatbot() {
       botSound.volume = 0.7
       botSound.play().catch(() => {})
     }
+    
 
     setLoading(false)
   }
