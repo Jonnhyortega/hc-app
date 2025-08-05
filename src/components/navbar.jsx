@@ -37,7 +37,7 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Image src={logo} alt="Gestion comercial" width={70} height={70} />
+        <Image src={logo} alt="Gestion comercial" width={50} height={50} />
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8 text-sm font-medium">
@@ -64,14 +64,14 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className={`animate__animated animate__bounceInRight fixed top-[20px] left-4 right-4 h-[90vh] z-51 bg-blue-900/70 backdrop-blur-md rounded-2xl shadow-lg p-4 flex flex-col items-center justify-center gap-4 md:hidden`}>
-          <Image src={logo} alt="Gestion comercial" width={70} height={70} className='absolute top-[20px]' />
-          <span onClick={() => { setOpen(!open) }} className='fixed top-[5px] right-[15px] text-white cursor-pointer text-2xl'>×</span>
-          <a href="#hero" onClick={() => setOpen(false)} className="text-lg font-medium text-white hover:text-blue-300 transition">Inicio</a>
-          <a href="#services" onClick={() => setOpen(false)} className="text-lg font-medium text-white hover:text-blue-300 transition">Servicios</a>
-          <a href="#about" onClick={() => setOpen(false)} className="text-lg font-medium text-white hover:text-blue-300 transition">Nosotros</a>
-          <a href="#contact" onClick={() => setOpen(false)} className="text-lg font-medium text-white hover:text-blue-300 transition">Contacto</a>
-          <h4 className='absolute bottom-[0px] text-sm text-gray-400 text-center p-4'>
+        <div className={`animate__animated animate__slideInRight fixed top-[1px] left-[0px] right-4 h-[100%] w-[100%] z-51 bg-blue-900/70 backdrop-blur-md shadow-lg p-4 flex flex-col items-center justify-center gap-4 md:hidden`}>
+          <Image src={logo} alt="Gestion comercial" width={120} height={70} className='absolute top-[20px]' />
+          <span onClick={() => { setOpen(!open) }} className='fixed top-[5px] right-[15px] text-white cursor-pointer text-[2rem]'>×</span>
+          <a href="#hero" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Inicio</a>
+          <a href="#services" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Servicios</a>
+          <a href="#about" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Nosotros</a>
+          <a href="#contact" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Contacto</a>
+          <h4 className='absolute bottom-[2rem] text-sm text-gray-400 text-center p-4'>
             Especialistas en habilitaciones comerciales.
           </h4>
         </div>
