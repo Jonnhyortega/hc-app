@@ -3,7 +3,7 @@ import { FaInstagram, FaEnvelope, FaWhatsapp } from 'react-icons/fa'
 export default function Contacto() {
   return (
     <div
-      className="relative bg-fixed bg-center bg-cover py-16"
+      className="relative bg-fixed bg-center bg-cover py-20"
       style={{ backgroundImage: "url('/background-contact.jpg')" }}
     >
       <div className="absolute inset-0 bg-blue-900/70 z-0" />
@@ -23,7 +23,7 @@ export default function Contacto() {
             <div className="bg-white rounded-full p-6 mb-4">
               <FaInstagram className="text-pink-600 text-4xl" />
             </div>
-            <p className="font-semibold text-lg">Instagram</p>
+            {/* <p className="font-semibold text-lg">Instagram</p> */}
             <span className="text-sm text-white">@gestionhc</span>
           </a>
 
@@ -37,7 +37,7 @@ export default function Contacto() {
             <div className="bg-white rounded-full p-6 mb-4">
               <FaWhatsapp className="text-green-500 text-4xl" />
             </div>
-            <p className="font-semibold text-lg">Cel & WhatsApp</p>
+            {/* <p className="font-semibold text-lg">WhatsApp</p> */}
             <span className="text-sm text-white">+54 11 5833-3949</span>
           </a>
 
@@ -49,7 +49,7 @@ export default function Contacto() {
             <div className="bg-white rounded-full p-6 mb-4">
               <FaEnvelope className="text-red-500 text-4xl" />
             </div>
-            <p className="font-semibold text-lg">Correo</p>
+            {/* <p className="font-semibold text-lg">Correo</p> */}
             <span className="text-sm text-white">gestioncomercialhc@gmail.com</span>
           </a>
         </div>
