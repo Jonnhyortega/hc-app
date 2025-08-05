@@ -67,10 +67,10 @@ export default function Navbar() {
         <div className={`animate__animated animate__slideInRight fixed top-[1px] left-[0px] right-4 h-[100%] w-[100%] z-51 bg-blue-900/70 backdrop-blur-md shadow-lg p-4 flex flex-col items-center justify-center gap-4 md:hidden`}>
           <Image src={logo} alt="Gestion comercial" width={120} height={70} className='absolute top-[20px]' />
           <span onClick={() => { setOpen(!open) }} className='fixed top-[5px] right-[15px] text-white cursor-pointer text-[2rem]'>×</span>
-          <a href="#hero" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Inicio</a>
-          <a href="#services" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Servicios</a>
-          <a href="#about" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Nosotros</a>
-          <a href="#contact" onClick={() => setOpen(false)} className="font-medium text-white text-[3rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Contacto</a>
+          <a href="#hero" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Inicio</a>
+          <a href="#services" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Servicios</a>
+          <a href="#about" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Nosotros</a>
+          <a href="#contact" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Contacto</a>
           <h4 className='absolute bottom-[2rem] text-sm text-gray-400 text-center p-4'>
             Especialistas en habilitaciones comerciales.
           </h4>
