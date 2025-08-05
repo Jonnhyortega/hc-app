@@ -1,7 +1,31 @@
 
 export default function Hero() {
   return (
-    <div className="relative h-screen w-scren bg-fixed bg-center bg-cover " style={{ backgroundImage: "url('/hero-background.webp')" }}>
+    <div className="relative h-screen w-scren bg-fixed bg-center bg-cover " style={{
+      backgroundImage: "url('/hero-background.webp')",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed",
+      backgroundSize: "cover",
+      WebkitBackgroundSize: "cover", // Safari
+      WebkitBackgroundAttachment: "fixed", // Safari
+      WebkitFlexDirection: "column", // Safari < 9
+      msFlexDirection: "column", // IE11
+      flexDirection: "column",
+      WebkitAlignItems: "center", // Safari < 9
+      msFlexAlign: "center", // IE11
+      alignItems: "center",
+      WebkitJustifyContent: "center", // Safari < 9
+      msFlexPack: "center", // IE11
+      justifyContent: "center",
+      gap: "1rem",
+      msGridRowGap: "1rem", // IE11
+      msGridColumnGap: "1rem", // IE11
+      position: "relative",
+      WebkitTransform: "translateZ(0)", // Safari, mejora renderizado
+      transform: "translateZ(0)",
+    }}
+    >
       {/* Background image */}
       <div className="absolute inset-0">
         {/* Overlay gradient */}

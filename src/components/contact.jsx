@@ -4,7 +4,29 @@ export default function Contacto() {
   return (
     <div
       className="relative bg-fixed bg-center bg-cover py-20"
-      style={{ backgroundImage: "url('/background-contact.jpg')" }}
+      style={{ backgroundImage: "url('/background-contact.jpg')",
+        backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed",
+      backgroundSize: "cover",
+      WebkitBackgroundSize: "cover", // Safari
+      WebkitBackgroundAttachment: "fixed", // Safari
+      WebkitFlexDirection: "column", // Safari < 9
+      msFlexDirection: "column", // IE11
+      flexDirection: "column",
+      WebkitAlignItems: "center", // Safari < 9
+      msFlexAlign: "center", // IE11
+      alignItems: "center",
+      WebkitJustifyContent: "center", // Safari < 9
+      msFlexPack: "center", // IE11
+      justifyContent: "center",
+      gap: "1rem",
+      msGridRowGap: "1rem", // IE11
+      msGridColumnGap: "1rem", // IE11
+      position: "relative",
+      WebkitTransform: "translateZ(0)", // Safari, mejora renderizado
+      transform: "translateZ(0)",
+      }}
     >
       <div className="absolute inset-0 bg-blue-900/70 z-0" />
 
