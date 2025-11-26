@@ -16,8 +16,9 @@ export default function Home() {
       <Navbar />
       <section id="hero">
         <Hero />
+        hola
       </section>
-      <Chatbot />
+      {/* <Chatbot /> */}
         <a  
           href='https://wa.link/kwvfsq'
           target='_blank'
