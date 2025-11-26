@@ -16,7 +16,6 @@ export default function Home() {
       <Navbar />
       <section id="hero">
         <Hero />
-        hola
       </section>
       {/* <Chatbot /> */}
         <a  
