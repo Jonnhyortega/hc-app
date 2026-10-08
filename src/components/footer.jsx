@@ -39,7 +39,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-white">
       <div className="bg-grid-dark absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" />
-      <div className="absolute -top-48 left-1/2 h-80 w-[800px] -translate-x-1/2 rounded-full bg-brand/30 blur-[120px]" />
+      <div className="absolute -top-[312px] left-1/2 h-[560px] w-[1040px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(21_80_160/0.3),transparent)]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
       <div className="relative mx-auto max-w-6xl px-4 pt-20 sm:px-6">

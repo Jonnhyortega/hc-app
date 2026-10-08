@@ -32,8 +32,8 @@ export default function Contacto() {
     <section id="contacto" className="bg-white px-4 pb-24 sm:px-6 sm:pb-32">
       <Reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-brand px-6 py-16 text-white sm:px-12 sm:py-20">
         <div className="bg-grid-dark absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
-        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/50 blur-[110px]" />
-        <div className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-ink/60 blur-[110px]" />
+        <div className="absolute -right-[238px] -top-[238px] h-[604px] w-[604px] bg-[radial-gradient(closest-side,rgb(79_156_249/0.5),transparent)]" />
+        <div className="absolute -bottom-[270px] -left-[190px] h-[604px] w-[604px] bg-[radial-gradient(closest-side,rgb(10_22_40/0.6),transparent)]" />
 
         <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>

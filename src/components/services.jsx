@@ -52,7 +52,7 @@ export default function Services() {
               style={{ '--spot-color': 'rgb(79 156 249 / 0.22)', '--spot-border': 'rgb(165 205 253 / 0.8)' }}
             >
             <div className="bg-grid-dark absolute inset-0 opacity-60" />
-            <div className="absolute -right-24 -bottom-24 h-72 w-72 rounded-full bg-brand blur-[90px]" />
+            <div className="absolute -right-[186px] -bottom-[186px] h-[468px] w-[468px] bg-[radial-gradient(closest-side,rgb(21_80_160/0.8),transparent)]" />
             <div className="relative flex h-full flex-col">
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/10 text-accent ring-1 ring-white/15">
                 <FaIndustry className="h-6 w-6" />

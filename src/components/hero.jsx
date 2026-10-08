@@ -40,8 +40,9 @@ export default function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden bg-ink text-white">
       <div className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
-      <div className="aurora-a absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-brand/45 blur-[140px]" />
-      <div className="aurora-b absolute right-[-10%] top-1/3 h-[420px] w-[420px] rounded-full bg-accent/20 blur-[120px]" />
+      {/* Auroras: degradado radial en vez de filter: blur (el blur grande trababa Safari/iPhone) */}
+      <div className="aurora-a absolute -top-[260px] left-1/2 h-[760px] w-[1150px] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(21_80_160/0.45),transparent)]" />
+      <div className="aurora-b absolute right-[-18%] top-[22%] h-[640px] w-[640px] bg-[radial-gradient(closest-side,rgb(79_156_249/0.2),transparent)]" />
 
       <div className="relative">
       {/* Ciudad 3D de fondo */}

@@ -41,7 +41,7 @@ export default function Process() {
     <section id="proceso" className="relative overflow-hidden bg-ink py-24 text-white sm:py-32">
       <div className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
       <div
-        className="absolute left-1/2 top-1/2 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/30 blur-[130px] transition-opacity duration-700"
+        className="absolute left-1/2 top-1/2 h-[640px] w-[960px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,rgb(21_80_160/0.3),transparent)] transition-opacity duration-700"
         style={{ opacity: 0.3 + progress * 0.7 }}
       />
 
