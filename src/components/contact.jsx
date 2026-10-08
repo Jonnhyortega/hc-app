@@ -1,6 +1,7 @@
 import { FaInstagram, FaEnvelope, FaWhatsapp } from 'react-icons/fa'
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import Reveal from './reveal'
+import { Magnetic } from './effects'
 import { site } from '@/lib/site'
 
 const channels = [
@@ -44,16 +45,18 @@ export default function Contacto() {
               Contanos qué actividad querés desarrollar y dónde. Te asesoramos sobre la viabilidad y los pasos a
               seguir.
             </p>
-            <a
-              href={site.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-9 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-ink transition hover:bg-brand-50"
-            >
-              <FaWhatsapp className="h-5 w-5 text-whatsapp" />
-              Hablar con un asesor
-              <ArrowUpRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <Magnetic className="mt-9">
+              <a
+                href={site.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-ink shadow-[0_0_40px_-8px] shadow-white/60 transition hover:bg-brand-50"
+              >
+                <FaWhatsapp className="h-5 w-5 text-whatsapp" />
+                Hablar con un asesor
+                <ArrowUpRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </Magnetic>
           </div>
 
           <ul className="min-w-0 space-y-3">
@@ -62,7 +65,7 @@ export default function Contacto() {
                 <a
                   href={href}
                   {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                  className="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition duration-300 hover:translate-x-1 hover:border-white/30 hover:bg-white/10"
                 >
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand">
                     <Icon className="h-5 w-5" />

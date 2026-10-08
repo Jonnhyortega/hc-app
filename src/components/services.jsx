@@ -1,6 +1,7 @@
 import { FaShoppingCart, FaIndustry, FaStore, FaWarehouse, FaBuilding } from 'react-icons/fa'
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import Reveal from './reveal'
+import { Magnetic, SpotlightCard } from './effects'
 import { site } from '@/lib/site'
 
 const services = [
@@ -45,7 +46,11 @@ export default function Services() {
 
         <div className="mt-14 grid gap-4 md:grid-cols-3 md:grid-rows-2">
           {/* Featured tile */}
-          <Reveal className="relative overflow-hidden rounded-3xl bg-ink p-8 text-white md:row-span-2 md:p-10">
+          <Reveal className="md:row-span-2">
+            <SpotlightCard
+              className="h-full overflow-hidden rounded-3xl bg-ink p-8 text-white md:p-10"
+              style={{ '--spot-color': 'rgb(79 156 249 / 0.22)', '--spot-border': 'rgb(165 205 253 / 0.8)' }}
+            >
             <div className="bg-grid-dark absolute inset-0 opacity-60" />
             <div className="absolute -right-24 -bottom-24 h-72 w-72 rounded-full bg-brand blur-[90px]" />
             <div className="relative flex h-full flex-col">
@@ -57,29 +62,30 @@ export default function Services() {
                 Acompañamos habilitaciones industriales, incluyendo los casos que requieren permisos
                 especiales o licencias adicionales.
               </p>
-              <a
-                href={site.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-10 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:bg-brand-50 md:mt-auto"
-              >
-                Consultar por mi industria
-                <ArrowUpRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              <Magnetic className="mt-10 w-fit md:mt-auto">
+                <a
+                  href={site.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:bg-brand-50"
+                >
+                  Consultar por mi industria
+                  <ArrowUpRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              </Magnetic>
             </div>
+            </SpotlightCard>
           </Reveal>
 
           {services.map(({ icon: Icon, title, text }, i) => (
-            <Reveal
-              key={title}
-              delay={80 + i * 70}
-              className="group rounded-3xl border border-line bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-brand-100 hover:shadow-xl hover:shadow-brand/5"
-            >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand transition group-hover:bg-brand group-hover:text-white">
+            <Reveal key={title} delay={80 + i * 70}>
+              <SpotlightCard className="group h-full rounded-3xl border border-line bg-white p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/10">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand transition duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white">
                 <Icon className="h-5 w-5" />
               </span>
               <h3 className="mt-6 text-lg font-semibold text-ink">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>

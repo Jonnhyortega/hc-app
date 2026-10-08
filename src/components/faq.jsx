@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { FaWhatsapp } from 'react-icons/fa'
 import Reveal from './reveal'
+import { Magnetic } from './effects'
 import { site } from '@/lib/site'
 
 const faqs = [
@@ -55,15 +56,17 @@ export default function Faq() {
           <p className="mt-5 text-lg text-ink-soft">
             ¿No encontrás lo que buscás? Escribinos y te respondemos a la brevedad.
           </p>
-          <a
-            href={site.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl border border-line px-5 py-3 font-semibold text-ink transition hover:border-brand-100 hover:bg-brand-50"
-          >
-            <FaWhatsapp className="h-5 w-5 text-whatsapp" />
-            Hacer una consulta
-          </a>
+          <Magnetic className="mt-8">
+            <a
+              href={site.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-line px-5 py-3 font-semibold text-ink transition hover:border-brand-100 hover:bg-brand-50"
+            >
+              <FaWhatsapp className="h-5 w-5 text-whatsapp" />
+              Hacer una consulta
+            </a>
+          </Magnetic>
         </Reveal>
 
         <Reveal delay={100} className="divide-y divide-line border-y border-line">

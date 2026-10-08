@@ -1,5 +1,6 @@
 import { ScaleIcon, UserGroupIcon, ShieldCheckIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'
 import Reveal from './reveal'
+import { SpotlightCard } from './effects'
 
 const pillars = [
   {
@@ -48,16 +49,14 @@ export default function AboutUs() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {pillars.map(({ icon: Icon, title, text }, i) => (
-            <Reveal
-              key={title}
-              delay={i * 80}
-              className="group rounded-2xl border border-line bg-paper p-6 transition-colors duration-300 hover:border-brand-100 hover:bg-brand-50"
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-line transition group-hover:bg-brand group-hover:text-white group-hover:ring-brand">
+            <Reveal key={title} delay={i * 80}>
+              <SpotlightCard className="group h-full rounded-2xl border border-line bg-paper p-6 transition-colors duration-300 hover:bg-white">
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-line transition duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:bg-brand group-hover:text-white group-hover:ring-brand">
                 <Icon className="h-5 w-5" />
               </span>
               <h3 className="mt-5 font-semibold text-ink">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>

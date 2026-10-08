@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Bars3Icon, XMarkIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import logo from '@/img/logo-2-removebg-preview.png'
 import { navLinks, site } from '@/lib/site'
+import { Magnetic } from './effects'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -57,15 +58,17 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href={site.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:bg-brand-50 sm:inline-flex"
-          >
-            Consultar
-            <ArrowUpRightIcon className="h-4 w-4" />
-          </a>
+          <Magnetic strength={0.2}>
+            <a
+              href={site.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:bg-brand-50"
+            >
+              Consultar
+              <ArrowUpRightIcon className="h-4 w-4" />
+            </a>
+          </Magnetic>
           <button
             onClick={() => setOpen(true)}
             className="rounded-lg p-2 text-white transition hover:bg-white/10 md:hidden"
