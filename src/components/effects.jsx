@@ -96,7 +96,7 @@ export function Parallax({ children, speed = 0.15, className = '' }) {
 
   return (
     <div ref={wrapRef} className={className}>
-      <div ref={innerRef} className="absolute inset-0 scale-[1.18] will-change-transform">
+      <div ref={innerRef} className="absolute inset-0 scale-[1.18]">
         {children}
       </div>
     </div>

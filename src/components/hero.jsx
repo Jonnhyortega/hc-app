@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { ArrowUpRightIcon, CheckBadgeIcon, DocumentCheckIcon } from '@heroicons/react/24/outline'
 import { FaWhatsapp } from 'react-icons/fa'
-import heroImg from '../../public/hero-background.webp'
+import heroImg from '@/img/obelisco.webp'
 import { site } from '@/lib/site'
 import { Magnetic, Parallax } from './effects'
+import CityScene from './cityScene'
 
 const highlights = ['Análisis de viabilidad', 'Presupuesto claro', 'Seguimiento de punta a punta']
 
@@ -39,7 +40,11 @@ export default function Hero() {
       <div className="aurora-a absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-brand/45 blur-[140px]" />
       <div className="aurora-b absolute right-[-10%] top-1/3 h-[420px] w-[420px] rounded-full bg-accent/20 blur-[120px]" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-32 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pt-40 lg:pb-28">
+      <div className="relative">
+      {/* Ciudad 3D de fondo */}
+      <CityScene className="fade-up absolute inset-x-0 bottom-0 h-[300px] opacity-80 sm:h-[400px]" />
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-48 pt-32 sm:px-6 sm:pb-56 lg:grid-cols-[1.1fr_1fr] lg:pt-40 lg:pb-60">
         <div>
           <p
             className="fade-up inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium tracking-wide text-white/80"
@@ -105,7 +110,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        <div className="fade-up relative mx-auto w-full max-w-md lg:max-w-none" style={{ '--delay': '400ms' }}>
+        <div className="fade-up relative mx-auto w-full max-w-md lg:max-w-none" style={{ '--delay': '150ms' }}>
           <Parallax
             speed={0.12}
             className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/40"
@@ -115,6 +120,7 @@ export default function Hero() {
               alt="Avenida Corrientes y el Obelisco, Ciudad de Buenos Aires"
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 1024px) 480px, 90vw"
               className="object-cover"
             />
@@ -137,6 +143,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+
       </div>
 
       {/* Rubros marquee */}

@@ -181,6 +181,72 @@ body {
   padding-right: 0.08em;
 }
 
+/* Texto gigante que se desvanece hacia abajo (footer) */
+.text-fade-down {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ------------------------------------------------------------------
+   Escena 3D del footer (ciudad tipo plano técnico)
+   ------------------------------------------------------------------ */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
+}
+.tw-1 { animation: twinkle 3.2s ease-in-out infinite; }
+.tw-2 { animation: twinkle 4.6s ease-in-out 1.1s infinite; }
+.tw-3 { animation: twinkle 6s ease-in-out 2.3s infinite; }
+.tw-4 { animation: twinkle 2.4s ease-in-out 0.6s infinite; }
+
+@keyframes floor-move {
+  to { transform: translateY(64px); }
+}
+.blueprint-grid {
+  background-image:
+    linear-gradient(to bottom, rgb(79 156 249 / 0.35) 1px, transparent 1px),
+    linear-gradient(to right, rgb(79 156 249 / 0.35) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.floor-move {
+  animation: floor-move 2.4s linear infinite;
+}
+
+/* Animaciones pausadas mientras la escena está fuera de pantalla */
+.scene[data-paused] *,
+.scene[data-paused] {
+  animation-play-state: paused !important;
+}
+
+@keyframes scan {
+  0% { transform: translateX(-20vw); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0; }
+}
+.scan-beam {
+  animation: scan 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-260px); opacity: 0; }
+}
+.particle {
+  animation: rise var(--dur, 9s) linear var(--delay, 0s) infinite;
+}
+
+@keyframes beacon {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.beacon {
+  animation: beacon 1.8s ease-in-out infinite;
+}
+
 /* Auroras del hero */
 @keyframes aurora-a {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -237,6 +303,14 @@ body {
   opacity: 1;
 }
 
+/* En pantallas chicas se evitan las animaciones de las manchas difuminadas (costosas en GPU) */
+@media (max-width: 767px) {
+  .aurora-a,
+  .aurora-b {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -253,8 +327,18 @@ body {
   .animate-float,
   .aurora-a,
   .aurora-b,
-  .text-shine {
+  .text-shine,
+  .tw-1,
+  .tw-2,
+  .tw-3,
+  .tw-4,
+  .floor-move,
+  .beacon {
     animation: none;
+  }
+  .scan-beam,
+  .particle {
+    display: none;
   }
 }
 @keyframes fade-in {

@@ -36,11 +36,6 @@ export const metadata = {
     locale: 'es_AR',
     type: 'website',
   },
-  icons: {
-    icon: '/logo-2.webp',
-    shortcut: '/logo-2.webp',
-    apple: '/logo-2.webp',
-  },
 }
 
 export const viewport = {
@@ -53,8 +48,8 @@ export default function RootLayout({ children }) {
       <body className={`${inter.variable} ${serif.variable} font-sans antialiased`}>
         {children}
 
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script id="ga-init" strategy="afterInteractive">
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
+        <Script id="ga-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
