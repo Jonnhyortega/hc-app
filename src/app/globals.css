@@ -22,6 +22,56 @@ html {
   scroll-padding-top: 6rem;
 }
 
+/* ------------------------------------------------------------------
+   Barra de scroll personalizada
+   Todo se ajusta desde estas variables (se pueden redefinir en
+   cualquier contenedor para tener una barra distinta en esa zona).
+   ------------------------------------------------------------------ */
+:root {
+  --scrollbar-size: 12px;              /* ancho (vertical) / alto (horizontal) */
+  --scrollbar-track: #0a1628;          /* fondo del riel */
+  --scrollbar-thumb: #1550a0;          /* barra */
+  --scrollbar-thumb-hover: #4f9cf9;    /* barra al pasar el mouse */
+  --scrollbar-thumb-active: #a5cdfd;   /* barra al arrastrarla */
+  --scrollbar-radius: 999px;           /* redondeo de la barra */
+  --scrollbar-gap: 3px;                /* espacio entre barra y borde del riel */
+  --scrollbar-firefox-width: thin;     /* Firefox: auto | thin | none */
+}
+
+/* Chrome, Edge, Safari, Opera */
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border: var(--scrollbar-gap) solid var(--scrollbar-track);
+  border-radius: var(--scrollbar-radius);
+  transition: background-color 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active);
+}
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* Firefox (solo admite color y grosor). Se aplica únicamente donde no
+   existe ::-webkit-scrollbar, porque en Chrome las propiedades estándar
+   anulan los estilos de arriba. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: var(--scrollbar-firefox-width);
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}
+
 body {
   background: #ffffff;
   color: var(--color-ink);
