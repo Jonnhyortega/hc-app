@@ -1,81 +1,134 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import logo from "@/img/logo-2-removebg-preview.png"
 import Image from 'next/image'
-import 'animate.css';
+import { Bars3Icon, XMarkIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline'
+import logo from '@/img/logo-2-removebg-preview.png'
+import { navLinks, site } from '@/lib/site'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const [visible, setVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const [scrolled, setScrolled] = useState(false)
 
-  // Detectar dirección de scroll
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setVisible(false) // scroll hacia abajo
-      } else {
-        setVisible(true) // scroll hacia arriba
-      }
-
-      setLastScrollY(currentScrollY)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [lastScrollY])
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    const onEsc = e => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onEsc)
+    return () => window.removeEventListener('keydown', onEsc)
+  }, [open])
 
   return (
-    <>
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <nav
-        className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-29 w-[90%] max-w-5xl rounded-2xl bg-[#1550A0] border border-white/20 shadow-lg px-6 py-3 flex items-center justify-between text-white transition-transform duration-500 ${
-          visible ? 'translate-y-0' : '-translate-y-[130%]'
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-500 sm:px-5 ${
+          scrolled
+            ? 'border border-white/10 bg-ink/80 shadow-xl shadow-ink/10 backdrop-blur-xl'
+            : 'border border-transparent bg-transparent'
         }`}
+        aria-label="Principal"
       >
-        {/* Logo */}
-        <Image src={logo} alt="Gestion comercial" width={50} height={50} />
+        <a href="#inicio" className="flex items-center gap-3" aria-label="HC Gestión Comercial, inicio">
+          <Image src={logo} alt="" width={44} height={32} priority className="h-8 w-auto" />
+          <span className="hidden text-sm font-medium leading-tight text-white/90 sm:block">
+            Gestión de
+            <br />
+            habilitación comercial
+          </span>
+        </a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-sm font-medium">
-          <a href="#hero" className="hover:text-blue-500 font-bold transition cursor-pointer">Inicio</a>
-          <a href="#services" className="hover:text-blue-500 font-bold transition cursor-pointer">Servicios</a>
-          <a href="#about" className="hover:text-blue-500 font-bold transition cursor-pointer">Nosotros</a>
-          <a href="#contact" className="hover:text-blue-500 font-bold transition cursor-pointer">Contacto</a>
+        <ul className="hidden items-center gap-1 md:flex">
+          {navLinks.map(l => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="rounded-lg px-3 py-2 text-sm font-medium text-white/75 transition hover:bg-white/10 hover:text-white"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={site.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-1.5 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:bg-brand-50 sm:inline-flex"
+          >
+            Consultar
+            <ArrowUpRightIcon className="h-4 w-4" />
+          </a>
+          <button
+            onClick={() => setOpen(true)}
+            className="rounded-lg p-2 text-white transition hover:bg-white/10 md:hidden"
+            aria-label="Abrir menú"
+            aria-expanded={open}
+          >
+            <Bars3Icon className="h-6 w-6" />
+          </button>
         </div>
-
-        {/* Mobile Toggle */}
-        <button onClick={() => setOpen(!open)} className="md:hidden">
-          {open ? (
-            <XMarkIcon className="h-6 w-6 text-white" />
-          ) : (
-            <Bars3Icon className="h-6 w-6 text-white" />
-          )}
-        </button>
       </nav>
 
-      {/* Overlay Blur */}
-      {open && (
-        <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden" onClick={() => setOpen(false)} />
-      )}
-
-      {/* Mobile Menu */}
-      {open && (
-        <div className={`animate__animated animate__slideInRight fixed top-[1px] left-[0px] right-4 h-[100%] w-[100%] z-51 bg-blue-900/70 backdrop-blur-md shadow-lg p-4 flex flex-col items-center justify-center gap-4 md:hidden`}>
-          <Image src={logo} alt="Gestion comercial" width={120} height={70} className='absolute top-[20px]' />
-          <span onClick={() => { setOpen(!open) }} className='fixed top-[5px] right-[15px] text-white cursor-pointer text-[2rem]'>×</span>
-          <a href="#hero" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Inicio</a>
-          <a href="#services" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Servicios</a>
-          <a href="#about" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Nosotros</a>
-          <a href="#contact" onClick={() => setOpen(false)} className="font-medium text-white text-[2rem] hover:text-blue-300 transition text-center w-[100%] pb-4 border-b-2">Contacto</a>
-          <h4 className='absolute bottom-[2rem] text-sm text-gray-400 text-center p-4'>
-            Especialistas en habilitaciones comerciales.
-          </h4>
+      {/* Mobile menu */}
+      <div
+        className={`fixed inset-0 z-50 bg-ink/95 backdrop-blur-xl transition-opacity duration-300 md:hidden ${
+          open ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        aria-hidden={!open}
+      >
+        <div className="flex items-center justify-between px-8 pt-7">
+          <Image src={logo} alt="HC Gestión Comercial" width={44} height={32} className="h-8 w-auto" />
+          <button
+            onClick={() => setOpen(false)}
+            className="rounded-lg p-2 text-white transition hover:bg-white/10"
+            aria-label="Cerrar menú"
+            tabIndex={open ? 0 : -1}
+          >
+            <XMarkIcon className="h-7 w-7" />
+          </button>
         </div>
-      )}
-    </>
+        <ul className="mt-12 flex flex-col px-8">
+          {navLinks.map((l, i) => (
+            <li
+              key={l.href}
+              className={`border-b border-white/10 transition-all duration-500 ${
+                open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}
+              style={{ transitionDelay: open ? `${80 + i * 50}ms` : '0ms' }}
+            >
+              <a
+                href={l.href}
+                onClick={() => setOpen(false)}
+                tabIndex={open ? 0 : -1}
+                className="block py-5 font-serif text-4xl text-white"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="absolute inset-x-8 bottom-10">
+          <a
+            href={site.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={open ? 0 : -1}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-white py-4 font-semibold text-ink"
+          >
+            Hablar con un asesor
+            <ArrowUpRightIcon className="h-4 w-4" />
+          </a>
+          <p className="mt-4 text-center text-sm text-white/50">Especialistas en habilitaciones en CABA</p>
+        </div>
+      </div>
+    </header>
   )
 }

@@ -1,77 +1,72 @@
-'use client'
+import Image from 'next/image'
+import logo from '@/img/logo-2-removebg-preview.png'
+import { navLinks, site } from '@/lib/site'
 
-import { PhoneIcon, EnvelopeIcon, CameraIcon } from '@heroicons/react/24/outline'
 export default function Footer() {
   return (
-    <footer className="bg-black text-white px-6 sm:px-12 py-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 md:flex items-center justify-between gap-10">
-        
-        {/* Columna 1: Marca */}
+    <footer className="bg-ink text-white">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1.5fr_1fr_1fr]">
         <div>
-          <img src='/logo.webp' alt="logo" width={550} />
-          <p className="mt-4 text-sm text-gray-400">
-            Especialistas en habilitaciones para comercios e industrias en CABA.
+          <div className="flex items-center gap-4">
+            <Image src={logo} alt="HC" width={64} height={46} className="h-11 w-auto" />
+            <span className="border-l border-white/20 pl-4 text-sm font-medium uppercase leading-snug tracking-[0.15em] text-white/80">
+              Gestión de
+              <br />
+              habilitación comercial
+            </span>
+          </div>
+          <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/55">
+            Especialistas en habilitaciones para comercios e industrias en la Ciudad de Buenos Aires.
           </p>
         </div>
 
-        {/* Columna 2: Enlaces */}
         <div>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#about" className="hover:text-blue-400 transition">Nosotros</a></li>
-            <li><a href="#services" className="hover:text-blue-400 transition">Servicios</a></li>
-            <li><a href="#faq" className="hover:text-blue-400 transition">Preguntas frecuentes</a></li>
-            <li><a href="#contact" className="hover:text-blue-400 transition">Contacto</a></li>
+          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">Navegación</h3>
+          <ul className="mt-5 space-y-3 text-sm">
+            {navLinks.map(l => (
+              <li key={l.href}>
+                <a href={l.href} className="text-white/75 transition hover:text-white">
+                  {l.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Columna 3: Contacto */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Contacto</h3>
-          <ul className="space-y-3 text-sm">
+          <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">Contacto</h3>
+          <ul className="mt-5 space-y-3 text-sm">
             <li>
-              <a
-                href="https://wa.link/kwvfsq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-green-400"
-              >
-                <PhoneIcon className="w-5 h-5 text-green-400" />
-                +54 11 5833-3949
+              <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-white/75 transition hover:text-white">
+                {site.phone}
               </a>
             </li>
             <li>
-              <a
-                href="mailto:gestioncomercialhc@gmail.com"
-                className="flex items-center gap-2 hover:text-red-400"
-              >
-                <EnvelopeIcon className="w-5 h-5 text-red-400" />
-                gestioncomercialhc@gmail.com
+              <a href={`mailto:${site.email}`} className="break-all text-white/75 transition hover:text-white">
+                {site.email}
               </a>
             </li>
             <li>
-              <a
-                href="https://www.instagram.com/gestionhc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-pink-400"
-              >
-                <CameraIcon className="w-5 h-5 text-pink-400" />
-                @gestionhc
+              <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white/75 transition hover:text-white">
+                {site.instagram}
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Footer inferior */}
-      <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} HC Gestión Comercial. Todos los derechos reservados.
-      </div>
-
-      <div className='flex items-center justify-center decoration-1'>
-        <a className='text-white underline mt-2 text-center text-xs w-[100%]' href="https://www.jonnhyortegadev.com" target='_blank'>
-            Content creator
-        </a>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-white/40 sm:flex-row sm:px-6">
+          <p>&copy; {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
+          <a
+            href="https://www.jonnhyortegadev.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:text-white"
+          >
+            Desarrollado por Jonnhy Ortega
+          </a>
+        </div>
       </div>
     </footer>
   )

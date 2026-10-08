@@ -1,81 +1,83 @@
-'use client'
 import { FaInstagram, FaEnvelope, FaWhatsapp } from 'react-icons/fa'
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
+import Reveal from './reveal'
+import { site } from '@/lib/site'
+
+const channels = [
+  {
+    icon: FaWhatsapp,
+    label: 'WhatsApp',
+    value: site.phone,
+    href: site.whatsappUrl,
+    external: true,
+  },
+  {
+    icon: FaEnvelope,
+    label: 'Email',
+    value: site.email,
+    href: `mailto:${site.email}`,
+  },
+  {
+    icon: FaInstagram,
+    label: 'Instagram',
+    value: site.instagram,
+    href: site.instagramUrl,
+    external: true,
+  },
+]
+
 export default function Contacto() {
   return (
-    <div
-      className="relative bg-fixed bg-center bg-cover py-20"
-      style={{ backgroundImage: "url('/background-contact.jpg')",
-        backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-      backgroundAttachment: "fixed",
-      backgroundSize: "cover",
-      WebkitBackgroundSize: "cover", // Safari
-      WebkitBackgroundAttachment: "fixed", // Safari
-      WebkitFlexDirection: "column", // Safari < 9
-      msFlexDirection: "column", // IE11
-      flexDirection: "column",
-      WebkitAlignItems: "center", // Safari < 9
-      msFlexAlign: "center", // IE11
-      alignItems: "center",
-      WebkitJustifyContent: "center", // Safari < 9
-      msFlexPack: "center", // IE11
-      justifyContent: "center",
-      gap: "1rem",
-      msGridRowGap: "1rem", // IE11
-      msGridColumnGap: "1rem", // IE11
-      position: "relative",
-      WebkitTransform: "translateZ(0)", // Safari, mejora renderizado
-      transform: "translateZ(0)",
-      }}
-    >
-      <div className="absolute inset-0 bg-blue-900/70 z-0" />
+    <section id="contacto" className="bg-white px-4 pb-24 sm:px-6 sm:pb-32">
+      <Reveal className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-brand px-6 py-16 text-white sm:px-12 sm:py-20">
+        <div className="bg-grid-dark absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/50 blur-[110px]" />
+        <div className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-ink/60 blur-[110px]" />
 
-      <div className="relative z-10 text-white text-center max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-4">CONTACTANOS PARA</h2>
-        <h3 className="text-4xl font-bold border-y-2 inline-block py-2 mb-12">CONSULTAS</h3>
+        <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+          <div>
+            <h2 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+              ¿Listo para habilitar{' '}
+              <span className="font-serif font-normal italic">tu negocio</span>?
+            </h2>
+            <p className="mt-5 max-w-lg text-lg text-white/75">
+              Contanos qué actividad querés desarrollar y dónde. Te asesoramos sobre la viabilidad y los pasos a
+              seguir.
+            </p>
+            <a
+              href={site.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-9 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-ink transition hover:bg-brand-50"
+            >
+              <FaWhatsapp className="h-5 w-5 text-whatsapp" />
+              Hablar con un asesor
+              <ArrowUpRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {/* Instagram */}
-          <a
-            href="https://www.instagram.com/gestionhc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center hover:scale-105 transition-transform duration-300"
-          >
-            <div className="bg-white rounded-full p-6 mb-4">
-              <FaInstagram className="text-pink-600 text-4xl" />
-            </div>
-            {/* <p className="font-semibold text-lg">Instagram</p> */}
-            <span className="text-sm text-white">@gestionhc</span>
-          </a>
-
-          {/* WhatsApp */}
-          <a
-            href="https://wa.link/kwvfsq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center hover:scale-105 transition-transform duration-300"
-          >
-            <div className="bg-white rounded-full p-6 mb-4">
-              <FaWhatsapp className="text-green-500 text-4xl" />
-            </div>
-            {/* <p className="font-semibold text-lg">WhatsApp</p> */}
-            <span className="text-sm text-white">+54 11 5833-3949</span>
-          </a>
-
-          {/* Correo */}
-          <a
-            href="mailto:gestioncomercialhc@gmail.com"
-            className="flex flex-col items-center hover:scale-105 transition-transform duration-300"
-          >
-            <div className="bg-white rounded-full p-6 mb-4">
-              <FaEnvelope className="text-red-500 text-4xl" />
-            </div>
-            {/* <p className="font-semibold text-lg">Correo</p> */}
-            <span className="text-sm text-white">gestioncomercialhc@gmail.com</span>
-          </a>
+          <ul className="min-w-0 space-y-3">
+            {channels.map(({ icon: Icon, label, value, href, external }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="group flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                >
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-xs uppercase tracking-wider text-white/60">{label}</span>
+                    <span className="block font-medium [overflow-wrap:anywhere]">{value}</span>
+                  </span>
+                  <ArrowUpRightIcon className="h-5 w-5 shrink-0 text-white/50 transition group-hover:text-white" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </div>
+      </Reveal>
+    </section>
   )
 }

@@ -1,6 +1,6 @@
 import "./globals.css";
-import { Inter, IBM_Plex_Sans } from 'next/font/google'
-import Head from 'next/head'
+import { Inter, Instrument_Serif } from 'next/font/google'
+import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -8,61 +8,61 @@ const inter = Inter({
   display: 'swap',
 })
 
-const ibm = IBM_Plex_Sans({
+const serif = Instrument_Serif({
   subsets: ['latin'],
-  variable: '--font-ibm',
-  weight: ['400', '500', '700'],
+  variable: '--font-serif-display',
+  weight: '400',
+  style: ['normal', 'italic'],
   display: 'swap',
 })
 
+const GA_ID = 'G-0S1RVV2XKX'
 
-// import { Geist, Geist_Mono } from "next/font/google";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-// src/app/layout.js
 export const metadata = {
-  title: 'HC Gestión Comercial',
-  description: "Asesoramiento para habilitaciones de industrias y comercios",
+  title: 'HC Gestión Comercial | Habilitaciones comerciales en CABA',
+  description:
+    'Asesoramiento integral para habilitaciones de comercios, industrias, depósitos y oficinas en la Ciudad de Buenos Aires. Del análisis del local a la obtención de la oblea.',
+  keywords: [
+    'habilitaciones comerciales',
+    'habilitación CABA',
+    'habilitación de comercios',
+    'habilitación industrial',
+    'gestoría habilitaciones Buenos Aires',
+  ],
+  openGraph: {
+    title: 'HC Gestión Comercial | Habilitaciones comerciales en CABA',
+    description:
+      'Asesoramiento integral para habilitar tu comercio o industria en la Ciudad de Buenos Aires.',
+    locale: 'es_AR',
+    type: 'website',
+  },
   icons: {
     icon: '/logo-2.webp',
     shortcut: '/logo-2.webp',
-    apple: '/logo-2.webp'
-  }
-};
+    apple: '/logo-2.webp',
+  },
+}
 
+export const viewport = {
+  themeColor: '#0a1628',
+}
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <Head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S1RVV2XKX" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-0S1RVV2XKX');
-            `
-          }}
-        />
-      </Head>
-
-
-      <body
-        className={`${inter.variable} ${ibm.variable} antialiased`}
-      >
+    <html lang="es-AR">
+      <body className={`${inter.variable} ${serif.variable} font-sans antialiased`}>
         {children}
+
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
-  );
+  )
 }

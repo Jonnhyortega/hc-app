@@ -1,80 +1,120 @@
+import Image from 'next/image'
+import { ArrowUpRightIcon, CheckBadgeIcon, DocumentCheckIcon } from '@heroicons/react/24/outline'
+import { FaWhatsapp } from 'react-icons/fa'
+import heroImg from '../../public/hero-background.webp'
+import { site } from '@/lib/site'
+
+const highlights = ['Análisis de viabilidad', 'Presupuesto claro', 'Seguimiento de punta a punta']
+
+const rubros = [
+  'Comercios',
+  'Industrias',
+  'Locales comerciales',
+  'Depósitos',
+  'Oficinas',
+  'Talleres',
+  'Permisos especiales',
+]
 
 export default function Hero() {
   return (
-    <div className="relative h-screen w-scren bg-fixed bg-center bg-cover " style={{
-      backgroundImage: "url('/hero-background.webp')",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-      backgroundAttachment: "fixed",
-      backgroundSize: "cover",
-      WebkitBackgroundSize: "cover", // Safari
-      WebkitBackgroundAttachment: "fixed", // Safari
-      WebkitFlexDirection: "column", // Safari < 9
-      msFlexDirection: "column", // IE11
-      flexDirection: "column",
-      WebkitAlignItems: "center", // Safari < 9
-      msFlexAlign: "center", // IE11
-      alignItems: "center",
-      WebkitJustifyContent: "center", // Safari < 9
-      msFlexPack: "center", // IE11
-      justifyContent: "center",
-      gap: "1rem",
-      msGridRowGap: "1rem", // IE11
-      msGridColumnGap: "1rem", // IE11
-      position: "relative",
-      WebkitTransform: "translateZ(0)", // Safari, mejora renderizado
-      transform: "translateZ(0)",
-    }}
-    >
-      {/* Background image */}
-      <div className="absolute inset-0">
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-transparent" />
+    <section id="inicio" className="relative overflow-hidden bg-ink text-white">
+      <div className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" />
+      <div className="absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-brand/40 blur-[140px]" />
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-20 pt-32 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pt-40 lg:pb-28">
+        <div>
+          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium tracking-wide text-white/80">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px] shadow-accent" />
+            Habilitaciones municipales · Ciudad de Buenos Aires
+          </p>
+
+          <h1 className="mt-6 text-[2.6rem] font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.2rem]">
+            Habilitá tu negocio{' '}
+            <span className="font-serif font-normal italic text-accent">sin vueltas</span>{' '}
+            y con total legalidad.
+          </h1>
+
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+            Asesoramos a comercios e industrias en CABA para que inicien sus actividades de forma
+            eficiente, cumpliendo con todas las normativas vigentes.
+          </p>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={site.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-ink transition hover:bg-brand-50"
+            >
+              <FaWhatsapp className="h-5 w-5 text-whatsapp" />
+              Hacé tu consulta
+              <ArrowUpRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <a
+              href="#proceso"
+              className="inline-flex items-center justify-center rounded-xl border border-white/20 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
+            >
+              Cómo trabajamos
+            </a>
+          </div>
+
+          <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/65">
+            {highlights.map(h => (
+              <li key={h} className="flex items-center gap-2">
+                <CheckBadgeIcon className="h-5 w-5 text-accent" />
+                {h}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/40">
+            <Image
+              src={heroImg}
+              alt="Avenida Corrientes y el Obelisco, Ciudad de Buenos Aires"
+              fill
+              priority
+              sizes="(min-width: 1024px) 480px, 90vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+            <div className="absolute inset-x-6 bottom-6">
+              <p className="font-serif text-3xl italic leading-tight">Buenos Aires</p>
+              <p className="mt-1 text-sm text-white/70">Conocemos la normativa de la Ciudad al detalle.</p>
+            </div>
+          </div>
+
+          <div className="animate-float absolute -left-4 top-10 flex items-center gap-3 rounded-2xl border border-white/10 bg-white p-3.5 pr-5 text-ink shadow-xl sm:-left-10">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand">
+              <DocumentCheckIcon className="h-5 w-5" />
+            </span>
+            <span>
+              <span className="block text-xs text-muted">Resultado</span>
+              <span className="block text-sm font-semibold">Habilitación aprobada</span>
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-        <h1 className="text-3xl md:text-6xl font-bold text-white leading-tight drop-shadow-[5px_5px_5px_black]">
-          HABILITACIONES<br /> MUNICIPALES
-        </h1>
-        <p className="mt-4 max-w-xl text-lg md:text-xl font-bold text-white/90 drop-shadow-[5px_5px_5px_black]">
-          Asesoramos a comercios e industrias en la Ciudad de Buenos Aires para que inicien sus actividades con total legalidad y eficiencia.
-        </p>
-        <a
-          href="https://wa.link/kwvfsq"
-          className="mt-8 inline-block rounded-md bg-blue-500 px-8 py-3 text-lg font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300"
-        >
-          Contactanos
-        </a>
+      {/* Rubros marquee */}
+      <div className="relative border-t border-white/10 py-6">
+        <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <ul className="animate-marquee flex shrink-0 items-center gap-12 pr-12" aria-label="Rubros que habilitamos">
+            {[...rubros, ...rubros].map((r, i) => (
+              <li
+                key={i}
+                aria-hidden={i >= rubros.length}
+                className="flex items-center gap-12 whitespace-nowrap text-sm font-medium uppercase tracking-[0.2em] text-white/45"
+              >
+                {r}
+                <span className="h-1 w-1 rounded-full bg-white/30" />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-      {/* Decorative wave at bottom */}
-      <div className="absolute bottom-0 w-full overflow-hidden leading-none">
-        <svg
-          className="relative block h-24 w-full"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 320"
-          preserveAspectRatio="none"
-        >
-          {/* Layer 1 */}
-          <path
-            fill="#0A2540"
-            d="M0,192L48,186.7C96,181,192,171,288,160C384,149,480,139,576,144C672,149,768,171,864,165.3C960,160,1056,128,1152,138.7C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          />
-          {/* Layer 2 (lighter) */}
-          <path
-            fill="#0F2A55"
-            fillOpacity="0.7"
-            d="M0,224L48,208C96,192,192,160,288,138.7C384,117,480,107,576,117.3C672,128,768,160,864,170.7C960,181,1056,171,1152,160C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          />
-          {/* Layer 3 (even lighter) */}
-          <path
-            fill="#1550A0"
-            fillOpacity="0.5"
-            d="M0,256L48,240C96,224,192,192,288,170.7C384,149,480,139,576,149.3C672,160,768,192,864,181.3C960,171,1056,117,1152,106.7C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          />
-        </svg>
-      </div>
-    </div>
-  );
+    </section>
+  )
 }

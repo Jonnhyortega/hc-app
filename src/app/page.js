@@ -1,5 +1,5 @@
+import { FaWhatsapp } from 'react-icons/fa'
 import AboutUs from '@/components/aboutUs'
-import Chatbot from '@/components/chatbot'
 import Contacto from '@/components/contact'
 import Faq from '@/components/faq'
 import Footer from '@/components/footer'
@@ -7,47 +7,31 @@ import Hero from '@/components/hero'
 import Navbar from '@/components/navbar'
 import Process from '@/components/process'
 import Services from '@/components/services'
-
-
+import { site } from '@/lib/site'
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Navbar />
-      <section id="hero">
+      <main>
         <Hero />
-      </section>
-      {/* <Chatbot /> */}
-        <a  
-          href='https://wa.link/kwvfsq'
-          target='_blank'
-          className="fixed bottom-24 right-6 z-39 flex items-center space-x-2 cursor-pointer bg-blue-900/70 p-5 rounded-full text-white shadow-lg hover:bg-blue-900 focus:outline-none"
-          aria-label="Abrir chat"
-        >
-          <img width="25" height="25" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
-        </a>
-
-      <main className="w-full flex flex-col">
-        <section id="about">
-          <AboutUs />
-        </section>
-        <section id="process">
-          <Process />
-        </section>
-        <section id="faq">
-          <Faq />
-        </section>
-        <section id="services">
-          <Services />
-        </section>
-        <section id="contact">
-          <Contacto />
-        </section>
+        <AboutUs />
+        <Services />
+        <Process />
+        <Faq />
+        <Contacto />
       </main>
+      <Footer />
 
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+      <a
+        href={site.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-white shadow-lg shadow-black/20 transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-whatsapp"
+        aria-label="Escribinos por WhatsApp"
+      >
+        <FaWhatsapp className="h-7 w-7" />
+      </a>
+    </>
   )
 }

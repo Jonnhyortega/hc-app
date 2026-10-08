@@ -1,40 +1,67 @@
-'use client'
+import { ScaleIcon, UserGroupIcon, ShieldCheckIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'
+import Reveal from './reveal'
 
-import Logo from "./utils/logo"
+const pillars = [
+  {
+    icon: UserGroupIcon,
+    title: 'Servicio personalizado',
+    text: 'Nos adaptamos a cada negocio: local, oficina, taller o industria.',
+  },
+  {
+    icon: ScaleIcon,
+    title: 'Normativa vigente',
+    text: 'Cada paso se realiza cumpliendo con todas las reglamentaciones de la Ciudad.',
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: 'Casos complejos',
+    text: 'Desde habilitaciones simples hasta trámites con permisos especiales o licencias adicionales.',
+  },
+  {
+    icon: ClipboardDocumentCheckIcon,
+    title: 'De principio a fin',
+    text: 'Desde el análisis inicial del local hasta la obtención de la oblea.',
+  },
+]
 
 export default function AboutUs() {
   return (
-    <div className="relative bg-blue-900/70 text-white text-justify">
-      {/* Clip-path superior */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-blue-900/50 z-10" style={{ clipPath: 'polygon(0 0, 100% 100%, 100% 0)' }} />
+    <section id="nosotros" className="bg-white py-24 sm:py-32">
+      <div className="mx-auto grid max-w-6xl gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20">
+        <Reveal>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Nosotros</p>
+          <h2 className="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            Simplificamos un proceso{' '}
+            <span className="font-serif font-normal italic text-brand">complejo</span>.
+          </h2>
+          <div className="mt-8 space-y-5 text-lg leading-relaxed text-ink-soft">
+            <p>
+              Somos una empresa proveedora de servicios de asesoramiento para la gestión de habilitaciones de
+              comercios e industrias en la Ciudad de Buenos Aires.
+            </p>
+            <p>
+              Con años de experiencia en el sector, guiamos a nuestros clientes a través de todo el proceso,
+              asegurando que cada paso se realice de manera eficiente y sin sorpresas.
+            </p>
+          </div>
+        </Reveal>
 
-      {/* Contenido principal */}
-      <div className="relative z-20 py-20 px-4 sm:px-10 lg:px-24 max-w-6xl mx-auto">
-        {/* Título estilizado */}
-        {/* <div className="mb-10 text-center">
-          <h1 className="text-5xl sm:text-6xl font-bold tracking-wider font-mono">
-            <span className="border-b-2 border-white pb-2 inline-block">HC</span>{' '}
-            <span className="text-xl sm:text-2xl font-light tracking-widest uppercase">comercial</span>
-          </h1>
-        </div> */}
-
-        <Logo />
-
-        {/* Párrafos */}
-        <p className="mb-6 leading-relaxed">
-          Somos una empresa proveedora de servicios de asesoramiento para la gestión de habilitaciones de comercios e industrias en la ciudad de Buenos Aires. 
-          Con años de experiencia en el sector, nos especializamos en guiar a nuestros clientes a través del complejo proceso de habilitaciones comerciales, asegurando que cada paso se realice de manera eficiente y cumpliendo con todas las normativas vigentes.
-        </p>
-
-        <p className="leading-relaxed">
-          Nuestro equipo de expertos está capacitado para manejar desde las habilitaciones más simples hasta las más complejas, incluyendo aquellos casos que requieren permisos especiales o licencias adicionales. 
-          Nos enfocamos en brindar un servicio personalizado, adaptándonos a las necesidades específicas de cada negocio, ya sea un local comercial, una oficina, un taller o una industria. 
-          Ofrecemos asesoramiento en todos los aspectos relacionados con las habilitaciones, desde el análisis inicial del local hasta la obtención de la oblea que permite el funcionamiento legal del negocio.
-        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {pillars.map(({ icon: Icon, title, text }, i) => (
+            <Reveal
+              key={title}
+              delay={i * 80}
+              className="group rounded-2xl border border-line bg-paper p-6 transition-colors duration-300 hover:border-brand-100 hover:bg-brand-50"
+            >
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-line transition group-hover:bg-brand group-hover:text-white group-hover:ring-brand">
+                <Icon className="h-5 w-5" />
+              </span>
+              <h3 className="mt-5 font-semibold text-ink">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
-
-      {/* Clip-path inferior */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-blue-900/90 z-10" style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }} />
-    </div>
+    </section>
   )
 }
