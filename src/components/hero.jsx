@@ -30,8 +30,11 @@ const title = [
   { text: 'legalidad.' },
 ]
 
+// Escalonado del título (ms). Corto a propósito: el título es el elemento LCP.
+const WORD_STAGGER = 35
+
 // Retardo (ms) de cada bloque del hero, después de que termina el título
-const after = (n = 0) => ({ '--delay': `${title.length * 90 + 150 + n * 120}ms` })
+const after = (n = 0) => ({ '--delay': `${title.length * WORD_STAGGER + 100 + n * 80}ms` })
 
 export default function Hero() {
   return (
@@ -62,7 +65,7 @@ export default function Hero() {
               <span key={i}>
                 <span
                   className={`word ${accent ? 'font-serif font-normal italic' : ''}`}
-                  style={{ '--delay': `${150 + i * 90}ms` }}
+                  style={{ '--delay': `${i * WORD_STAGGER}ms` }}
                 >
                   {accent ? <span className="text-shine">{text}</span> : text}
                 </span>
@@ -110,7 +113,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        <div className="fade-up relative mx-auto w-full max-w-md lg:max-w-none" style={{ '--delay': '150ms' }}>
+        <div className="fade-up relative mx-auto w-full max-w-md lg:max-w-none" style={{ '--delay': '0ms' }}>
           <Parallax
             speed={0.12}
             className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-black/40"

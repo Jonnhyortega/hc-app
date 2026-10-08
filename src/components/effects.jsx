@@ -118,7 +118,8 @@ export function useScrollProgress(ref, { start = 0.8, end = 0.4 } = {}) {
       const vh = window.innerHeight
       const from = vh * start
       const to = vh * end - r.height
-      setProgress(Math.min(1, Math.max(0, (from - r.top) / (from - to))))
+      // Redondeado: si el valor no cambia, React no vuelve a renderizar la sección
+      setProgress(Math.round(Math.min(1, Math.max(0, (from - r.top) / (from - to))) * 100) / 100)
     }
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update)

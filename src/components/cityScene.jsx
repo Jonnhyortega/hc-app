@@ -74,7 +74,33 @@ const svgProps = {
   className: 'absolute inset-0 h-full w-full',
 }
 
-function Skyline({ data, fill, edge, windowColor, windowOpacity, obelisk = false }) {
+function Skyline({ data, fill, edge, windowColor, windowOpacity, obelisk = false, lite = false }) {
+  // Versión liviana (pantallas táctiles): todo en un único SVG sin animar.
+  // En iPhone las 6 capas animadas por ciudad trababan la carga y el scroll.
+  if (lite) {
+    return (
+      <svg {...svgProps}>
+        {obelisk && (
+          <>
+            <polygon points={OBELISK} fill={fill} />
+            <polyline points={OBELISK} fill="none" stroke="rgb(165 205 253 / 0.9)" strokeWidth="1.5" />
+            <circle cx={OBELISK_X} cy="15" r="3" fill="#4f9cf9" />
+          </>
+        )}
+        <path d={data.buildings} fill={fill} />
+        <path d={data.edges} stroke={edge} strokeWidth="1.2" fill="none" />
+        {data.antennas.map((a, i) => (
+          <g key={i}>
+            <rect x={a.x - 0.75} y={a.y - 22} width="1.5" height="22" fill={edge} />
+            <circle cx={a.x} cy={a.y - 23} r="1.8" fill="#ff6b6b" />
+          </g>
+        ))}
+        <path d={data.windows.static} fill={windowColor} opacity={windowOpacity} />
+        <path d={TWINKLE.map(cls => data.windows[cls]).join('')} fill={windowColor} opacity={windowOpacity * 0.6} />
+      </svg>
+    )
+  }
+
   return (
     <div className="relative h-full w-full">
       {/* Capa estática: edificios + ventanas fijas */}
@@ -112,13 +138,21 @@ function Skyline({ data, fill, edge, windowColor, windowOpacity, obelisk = false
 }
 
 export default function CityScene({ className = '' }) {
-  // Se genera en el navegador después de cargar: no suma peso al HTML ni demora la primera pintura
+  // Se genera en el navegador cuando queda libre: no suma peso al HTML ni compite con la hidratación
   const [city, setCity] = useState(null)
   useEffect(() => {
-    setCity({
-      far: buildSkyline(7, { minH: 90, maxH: 250, windowChance: 0.1 }),
-      near: buildSkyline(21, { minH: 26, maxH: 105, windowChance: 0.18, gapAroundObelisk: 110 }),
-    })
+    const build = () =>
+      setCity({
+        far: buildSkyline(7, { minH: 90, maxH: 250, windowChance: 0.1 }),
+        near: buildSkyline(21, { minH: 26, maxH: 105, windowChance: 0.18, gapAroundObelisk: 110 }),
+        lite: window.matchMedia('(pointer: coarse)').matches,
+      })
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(build, { timeout: 1500 })
+      return () => cancelIdleCallback(id)
+    }
+    const id = setTimeout(build, 300)
+    return () => clearTimeout(id)
   }, [])
 
   const rootRef = useRef(null)
@@ -192,7 +226,8 @@ export default function CityScene({ className = '' }) {
     <div ref={rootRef} aria-hidden className={`scene pointer-events-none select-none [perspective:1200px] ${className}`}>
       <div ref={sceneRef} className="relative h-full [transform-style:preserve-3d]">
         {/* Halo detrás de la ciudad */}
-        <div className="absolute bottom-[90px] left-1/2 h-64 w-[70%] -translate-x-1/2 rounded-full bg-brand/40 blur-[100px] sm:bottom-[110px]" />
+        {/* Degradado radial en vez de filter: blur (mucho más barato, sobre todo en Safari) */}
+        <div className="absolute bottom-[40px] left-1/2 h-96 w-[90%] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(21_80_160/0.4),transparent)] sm:bottom-[60px]" />
 
         {/* Ciudad lejana con el Obelisco */}
         <div
@@ -200,7 +235,7 @@ export default function CityScene({ className = '' }) {
           data-depth="0.4"
           className="absolute inset-x-[-6%] bottom-[90px] h-[190px] opacity-90 will-change-transform sm:bottom-[110px] sm:h-[270px]"
         >
-          {city && <Skyline data={city.far} fill="#11284d" edge="rgb(79 156 249 / 0.55)" windowColor="#7fb6fb" windowOpacity={0.6} obelisk />}
+          {city && <Skyline data={city.far} fill="#11284d" edge="rgb(79 156 249 / 0.55)" windowColor="#7fb6fb" windowOpacity={0.6} obelisk lite={city.lite} />}
         </div>
 
         {/* Ciudad cercana */}
@@ -209,7 +244,7 @@ export default function CityScene({ className = '' }) {
           data-depth="1"
           className="absolute inset-x-[-8%] bottom-[90px] h-[120px] will-change-transform sm:bottom-[110px] sm:h-[170px]"
         >
-          {city && <Skyline data={city.near} fill="#0b1a31" edge="rgb(79 156 249 / 0.6)" windowColor="#ffd88a" windowOpacity={0.8} />}
+          {city && <Skyline data={city.near} fill="#0b1a31" edge="rgb(79 156 249 / 0.6)" windowColor="#ffd88a" windowOpacity={0.8} lite={city.lite} />}
         </div>
 
         {/* Haz de inspección */}
@@ -228,7 +263,7 @@ export default function CityScene({ className = '' }) {
         </div>
 
         {/* Partículas */}
-        {particles.map((p, i) => (
+        {city && !city.lite && particles.map((p, i) => (
           <span
             key={i}
             className="particle absolute rounded-full bg-accent/70 shadow-[0_0_6px] shadow-accent will-change-transform"
